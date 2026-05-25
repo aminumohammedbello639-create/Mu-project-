@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alama Claq — Sponsored Ads That Convert</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f7f4ef;
+    --gold: #e8a020;
+    --gold-light: #f5c85a;
+    --accent: #ff3c2f;
+    --muted: #6b6660;
+    --card-bg: #ffffff;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(247, 244, 239, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper) !important;
+    padding: 10px 22px;
+    border-radius: 3px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'ADS';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28vw;
+    color: rgba(0,0,0,0.035);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-left { position: relative; z-index: 2; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 7vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.85em;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 36px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .hero-graphic {
+    width: 420px;
+    height: 480px;
+    position: relative;
+  }
+
+  .hero-card {
+    position: absolute;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    padding: 24px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-card-main {
+    width: 280px;
+    top: 40px;
+    left: 20px;
+  }
+
+  .hero-card-stat {
+    width: 160px;
+    bottom: 60px;
+    right: 0;
+    animation-delay: -3s;
+    animation-duration: 5s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  .card-tag {
+    display: inline-block;
+    background: #fff4e0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+  }
+
+  .card-metric {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .card-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 60px;
+    margin-top: 16px;
+  }
+
+  .bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: #f0f0f0;
+    transition: background 0.2s;
+  }
+
+  .bar.active { background: var(--gold); }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff4e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--ink);
+    padding: 18px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--paper);
+    margin: 0 32px;
+    opacity: 0.7;
+  }
+
+  .marquee-track span.dot {
+    color: var(--gold);
+    opacity: 1;
+    font-size: 0.6rem;
+    vertical-align: middle;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: 1px;
+  }
+
+  /* ── SERVICES ── */
+  .services-section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+
+  .services-header p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    align-self: end;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--ink); }
+
+  .service-card:hover .service-title,
+  .service-card:hover .service-desc,
+  .service-card:hover .service-num { color: var(--paper); }
+
+  .service-card:hover .service-icon-wrap { background: rgba(255,255,255,0.1); }
+
+  .service-card:hover .service-arrow { color: var(--gold); opacity: 1; }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    transition: color 0.3s;
+  }
+
+  .service-icon-wrap {
+    width: 56px;
+    height: 56px;
+    background: #fff4e0;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    transition: background 0.3s;
+  }
+
+  .service-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    transition: color 0.3s;
+  }
+
+  .service-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    transition: color 0.3s;
+  }
+
+  .service-arrow {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    font-size: 1.4rem;
+    color: var(--muted);
+    opacity: 0.3;
+    transition: color 0.3s, opacity 0.3s;
+  }
+
+  /* ── WHY US ── */
+  .why-section {
+    background: var(--ink);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .why-left .section-title { color: var(--paper); }
+  .why-left .section-label { }
+
+  .why-left p {
+    color: rgba(247,244,239,0.6);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-top: 20px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,0.04);
+    padding: 32px 28px;
+  }
+
+  .stat-box .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-box .lbl {
+    font-size: 0.85rem;
+    color: rgba(247,244,239,0.5);
+    margin-top: 6px;
+  }
+
+  .why-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .why-item {
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+
+  .why-item:hover { background: rgba(255,255,255,0.08); }
+
+  .why-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 10px;
+    background: rgba(232,160,32,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .why-item h4 {
+    font-family: 'DM Serif Display', serif;
+    color: var(--paper);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .why-item p {
+    color: rgba(247,244,239,0.5);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* ── PLATFORMS ── */
+  .platforms-section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .platforms-section .section-label { justify-content: center; }
+
+  .platform-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1.5px solid rgba(0,0,0,0.08);
+    border-radius: 50px;
+    padding: 14px 26px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .pill:hover {
+    border-color: var(--gold);
+    background: #fff9ee;
+    transform: translateY(-4px);
+  }
+
+  .pill-icon { font-size: 1.3rem; }
+
+  /* ── PROCESS ── */
+  .process-section {
+    background: #f0ece5;
+    padding: 100px 48px;
+  }
+
+  .process-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .process-header {
+    margin-bottom: 64px;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    opacity: 0.4;
+  }
+
+  .process-step {
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .step-num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .process-step h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+
+  .process-step p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .testimonial-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    font-family: 'DM Serif Display', serif;
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 10px; left: 24px;
+    line-height: 1;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .author-role {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--ink);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::after {
+    content: 'CONTACT';
+    position: absolute;
+    bottom: -60px;
+    left: -20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20vw;
+    color: rgba(255,255,255,0.02);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-left .section-title { color: var(--paper); }
+
+  .contact-left p {
+    color: rgba(247,244,239,0.55);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .contact-detail-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(232,160,32,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .contact-detail-text {
+    font-size: 0.9rem;
+    color: rgba(247,244,239,0.7);
+  }
+
+  .contact-detail-text strong {
+    display: block;
+    color: var(--paper);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .contact-form {
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 44px 40px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.5);
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+
+  .form-group select option { background: #1a1a24; color: var(--paper); }
+
+  .form-group textarea { resize: none; height: 110px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+  }
+
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060609;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--paper);
+    opacity: 0.7;
+  }
+
+  .footer-logo span { color: var(--gold); opacity: 1; }
+
+  footer p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.82rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    nav ul { display: none; }
+
+    .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; text-align: center; }
+    .hero::before { display: none; }
+    .hero-right { display: none; }
+    .hero-desc { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+
+    .services-section, .testimonials-section, .platforms-section { padding: 60px 20px; }
+    .services-header { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    .why-section, .contact-section { padding: 60px 20px; }
+    .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+
+    .process-section { padding: 60px 20px; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .process-steps::before { display: none; }
+
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 28px 20px; }
+
+    footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+    .footer-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Alama<span>Claq</span></a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Sponsored Ads Agency</div>
+    <h1>ADS THAT<br><em>Convert</em><br>& SCALE</h1>
+    <p class="hero-desc">Alama Claq helps businesses grow through powerful sponsored ad campaigns on every major platform. We handle strategy, creation, and optimization — you handle growth.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start Your Campaign →</a>
+      <a href="#services" class="btn-ghost">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-graphic">
+      <div class="hero-card hero-card-main">
+        <div class="card-tag">Campaign Results</div>
+        <div class="card-metric">3.8×</div>
+        <div class="card-label">Average ROAS this month</div>
+        <div class="bar-chart">
+          <div class="bar" style="height:30%"></div>
+          <div class="bar active" style="height:55%"></div>
+          <div class="bar" style="height:45%"></div>
+          <div class="bar active" style="height:80%"></div>
+          <div class="bar" style="height:65%"></div>
+          <div class="bar active" style="height:100%"></div>
+          <div class="bar" style="height:75%"></div>
+        </div>
+      </div>
+      <div class="hero-card hero-card-stat">
+        <div class="stat-row">
+          <div class="stat-icon">🎯</div>
+          <div>
+            <div class="card-metric" style="font-size:1.8rem">94%</div>
+            <div class="card-label">Target Accuracy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Facebook Ads</span><span class="dot">◆</span>
+    <span>Google Ads</span><span class="dot">◆</span>
+    <span>Instagram Ads</span><span class="dot">◆</span>
+    <span>TikTok Ads</span><span class="dot">◆</span>
+    <span>YouTube Ads</span><span class="dot">◆</span>
+    <span>LinkedIn Ads</span><span class="dot">◆</span>
+    <span>Twitter/X Ads</span><span class="dot">◆</span>
+    <span>Brand Awareness</span><span class="dot">◆</span>
+    <span>Lead Generation</span><span class="dot">◆</span>
+    <span>Retargeting</span><span class="dot">◆</span>
+    <!-- repeated for seamless loop -->
+    <span>Facebook Ads</span><span class="dot">◆</span>
+    <span>Google Ads</span><span class="dot">◆</span>
+    <span>Instagram Ads</span><span class="dot">◆</span>
+    <span>TikTok Ads</span><span class="dot">◆</span>
+    <span>YouTube Ads</span><span class="dot">◆</span>
+    <span>LinkedIn Ads</span><span class="dot">◆</span>
+    <span>Twitter/X Ads</span><span class="dot">◆</span>
+    <span>Brand Awareness</span><span class="dot">◆</span>
+    <span>Lead Generation</span><span class="dot">◆</span>
+    <span>Retargeting</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">SERVICES BUILT<br>FOR RESULTS</h2>
+    </div>
+    <p>Every service we offer is engineered around one goal: turning your ad spend into measurable business growth. No vanity metrics — only real ROI.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon-wrap">📱</div>
+      <h3 class="service-title">Social Media Ads</h3>
+      <p class="service-desc">High-converting ad campaigns on Facebook, Instagram, and TikTok. We target the right audience at the right moment with creative that stops the scroll.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon-wrap">🔍</div>
+      <h3 class="service-title">Google Advertising</h3>
+      <p class="service-desc">Search, Display, Shopping, and YouTube ads that reach customers who are actively looking for what you offer. Maximum intent, maximum conversion.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon-wrap">🏷️</div>
+      <h3 class="service-title">Brand Promotion</h3>
+      <p class="service-desc">Build lasting brand recognition through strategic awareness campaigns. We craft stories that make your brand impossible to ignore and easy to remember.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon-wrap">📊</div>
+      <h3 class="service-title">Campaign Management</h3>
+      <p class="service-desc">End-to-end campaign creation, monitoring, A/B testing, and optimization. We continuously tune performance so your budget works harder every single day.</p>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why">
+  <div class="why-inner">
+    <div class="why-left reveal">
+      <div class="section-label">Why Alama Claq</div>
+      <h2 class="section-title">WE DON'T RUN<br>ADS. WE BUILD<br>ENGINES.</h2>
+      <p>Most agencies set campaigns and forget them. We treat every naira or dollar of your ad spend like it's our own — obsessing over data, creative, and continuous improvement.</p>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="num">200+</div>
+          <div class="lbl">Campaigns Launched</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">3.8×</div>
+          <div class="lbl">Average ROAS</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">98%</div>
+          <div class="lbl">Client Retention</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">7+</div>
+          <div class="lbl">Ad Platforms</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right reveal">
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <div>
+          <h4>Precision Targeting</h4>
+          <p>We use advanced audience segmentation and behavioural data to reach exactly the people most likely to buy from you.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">✍️</div>
+        <div>
+          <h4>Creative That Converts</h4>
+          <p>Our in-house creative team produces scroll-stopping visuals and copy tailored to each platform and audience.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📈</div>
+        <div>
+          <h4>Data-Driven Optimization</h4>
+          <p>We monitor campaigns daily, run constant A/B tests, and make data-backed decisions to continuously improve performance.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💬</div>
+        <div>
+          <h4>Transparent Reporting</h4>
+          <p>Weekly clear reports showing what's working, what isn't, and exactly what we're doing about it. No smoke, no mirrors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms-section">
+  <div class="section-label reveal">Platforms We Master</div>
+  <h2 class="section-title reveal">EVERYWHERE<br>YOUR CUSTOMERS ARE</h2>
+  <div class="platform-pills reveal">
+    <div class="pill"><span class="pill-icon">📘</span> Facebook</div>
+    <div class="pill"><span class="pill-icon">📸</span> Instagram</div>
+    <div class="pill"><span class="pill-icon">🎵</span> TikTok</div>
+    <div class="pill"><span class="pill-icon">🔴</span> YouTube</div>
+    <div class="pill"><span class="pill-icon">🔍</span> Google Search</div>
+    <div class="pill"><span class="pill-icon">🖥️</span> Google Display</div>
+    <div class="pill"><span class="pill-icon">💼</span> LinkedIn</div>
+    <div class="pill"><span class="pill-icon">𝕏</span> Twitter / X</div>
+    <div class="pill"><span class="pill-icon">📌</span> Pinterest</div>
+    <div class="pill"><span class="pill-icon">📦</span> Google Shopping</div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <div class="section-label">Our Process</div>
+      <h2 class="section-title">FROM BRIEF<br>TO RESULTS IN 4 STEPS</h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Discovery Call</h4>
+        <p>We learn about your business, goals, target audience, and current marketing challenges.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Strategy & Setup</h4>
+        <p>We build a custom ad strategy, create compelling creatives, and set up your campaigns.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Launch & Monitor</h4>
+        <p>Campaigns go live. We monitor performance daily and make real-time adjustments.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Optimize & Scale</h4>
+        <p>We double down on what works, cut what doesn't, and scale your winning campaigns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-label reveal">Client Results</div>
+  <h2 class="section-title reveal">REAL WORDS FROM<br>REAL CLIENTS</h2>
+  <div class="testimonials-grid reveal">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Alama Claq transformed our Facebook campaigns. Our cost per lead dropped by 60% in the first month. They know exactly who to target and how to reach them.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: #e8a020;">AK</div>
+        <div>
+          <div class="author-name">Amaka Kelechi</div>
+          <div class="author-role">CEO, StyleHouse Lagos</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">We tried running Google Ads ourselves and burned through budget with nothing to show. Alama Claq took over and within 6 weeks we were getting consistent quality leads.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: #0d6efd;">BO</div>
+        <div>
+          <div class="author-name">Bayo Olatunji</div>
+          <div class="author-role">Founder, FinServe Pro</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Their TikTok ad creative is genuinely brilliant. Our brand went from invisible to 2 million impressions in under a month. The ROI speaks for itself.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: #ff3c2f;">NN</div>
+        <div>
+          <div class="author-name">Ngozi Nwachukwu</div>
+          <div class="author-role">Marketing Lead, Radiant Skin Co.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">READY TO<br>GROW YOUR<br>BUSINESS?</h2>
+      <p>Tell us about your goals and we'll put together a custom ad strategy for your business. No commitment, just a conversation.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉️</div>
+        <div class="contact-detail-text">
+          <strong>Email</strong>
+          info@alamaclaq.com
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div class="contact-detail-text">
+          <strong>Phone / WhatsApp</strong>
+          +234 XXX XXX XXXX
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🌍</div>
+        <div class="contact-detail-text">
+          <strong>Location</strong>
+          Lagos, Nigeria — Serving Clients Worldwide
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Doe">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@company.com">
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" placeholder="+234 ...">
+      </div>
+      <div class="form-group">
+        <label>Service Interested In</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Social Media Ads</option>
+          <option>Google Advertising</option>
+          <option>Brand Promotion</option>
+          <option>Campaign Management</option>
+          <option>Full Package</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Business</label>
+        <textarea placeholder="Briefly describe your business and goals..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="handleSubmit(this)">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Alama<span>Claq</span></div>
+  <p>© 2026 Alama Claq. All Rights Reserved.</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#why">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.08)' : 'none';
+  });
+
+  // Form submit
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#22c55e';
+    btn.style.color = 'white';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
